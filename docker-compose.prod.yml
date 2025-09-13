@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # Application service for production
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: acquisitions-prod
+    ports:
+      - "3000:3000"
+    # Alternatively, you can use env_file for non-sensitive configs
+    env_file:
+      - .env.production
+    volumes:
+      # Mount logs directory for log collection
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - app-network
+    # Security options
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:noexec,nosuid,size=100m
+    
+  # Database migration service for production
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: acquisitions-migrate-prod
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=${DATABASE_URL}
+    command: npm run db:migrate
+    networks:
+      - app-network
+    profiles:
+      - migrate
+    
+  # Optional: Log aggregation service (you might want to use external services like ELK, Fluentd, etc.)
+  # log-collector:
+  #   image: fluent/fluent-bit:latest
+  #   volumes:
+  #     - ./logs:/var/log/app:ro
+  #   # Configure based on your logging infrastructure
+
+networks:
+  app-network:
+    driver: bridge
+
+# Production-specific configurations
+# You might want to add additional services like:
+# - Redis for caching/sessions
+# - Nginx as reverse proxy
+# - Monitoring services (Prometheus, Grafana)
+# - Health check services

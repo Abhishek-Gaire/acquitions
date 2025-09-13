@@ -1,0 +1,91 @@
+services:
+  # Neon Local Proxy for development
+  neon-local:
+    image: neondatabase/neon_local:latest
+    container_name: neon-local
+    environment:
+      - DISABLE_ETC_HOSTS_UPDATE:"true"
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env.development
+    volumes:
+      # Persist data between restarts (optional for development)
+      - neon_local_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ 'CMD', 'pg_isready', '-h', 'localhost', '-p', '5432', '-U', 'neon' ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - app-network
+
+  # Application service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    container_name: acquisitions-dev
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - .env.development
+    volumes:
+      # Mount source code for hot reload in development
+      - .:/app
+      - /app/node_modules  # Prevent overwriting node_modules
+      # Mount logs directory
+      - ./logs:/app/logs
+    depends_on:
+      neon-local:
+        condition: service_healthy
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "const http = require('http'); const req = http.request({hostname: 'localhost', port: 5173, path: '/health'}, (res) => process.exit(res.statusCode === 200 ? 0 : 1)); req.on('error', () => process.exit(1)); req.end();",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - app-network
+    command: npm run dev
+    
+  # Database migration service (optional)
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    container_name: acquisitions-migrate
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - .env.development
+    depends_on:
+      neon-local:
+        condition: service_healthy
+    networks:
+      - app-network
+    command: npm run db:migrate
+    profiles:
+      - migrate
+
+volumes:
+  neon_local_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
