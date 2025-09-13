@@ -6,3 +6,24 @@
 {"level":"info","message":"::1 - - [12/Sep/2025:14:21:20 +0000] \"GET /api/v1/sign-in HTTP/1.1\" 404 153 \"-\" \"PostmanRuntime/7.46.0\"","service":"acquisition-api"}
 {"level":"info","message":"::1 - - [12/Sep/2025:14:21:25 +0000] \"POST /api/v1/sign-in HTTP/1.1\" 404 154 \"-\" \"PostmanRuntime/7.46.0\"","service":"acquisition-api"}
 {"level":"info","message":"::1 - - [12/Sep/2025:14:21:38 +0000] \"POST /api/v1/auth/sign-in HTTP/1.1\" 200 7 \"-\" \"PostmanRuntime/7.46.0\"","service":"acquisition-api"}
+{"level":"info","message":"Hello from acquisition","service":"acquisition-api"}
+{"level":"info","message":"::1 - - [13/Sep/2025:15:12:08 +0000] \"GET / HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\"","service":"acquisition-api"}
+{"level":"info","message":"::1 - - [13/Sep/2025:15:12:08 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\"","service":"acquisition-api"}
+{"level":"info","message":"::1 - - [13/Sep/2025:15:12:14 +0000] \"GET / HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\"","service":"acquisition-api"}
+{"level":"info","message":"Hello from acquisition","service":"acquisition-api"}
+{"level":"info","message":"Hello from acquisition","service":"acquisition-api"}
+{"level":"info","message":"::1 - - [13/Sep/2025:15:12:15 +0000] \"GET / HTTP/1.1\" 200 27 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\"","service":"acquisition-api"}
+{"level":"info","message":"Hello from acquisition","service":"acquisition-api"}
+{"level":"info","message":"::1 - - [13/Sep/2025:15:12:17 +0000] \"GET / HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\"","service":"acquisition-api"}
+{"level":"info","message":"Hello from acquisition","service":"acquisition-api"}
+{"level":"info","message":"::1 - - [13/Sep/2025:15:12:18 +0000] \"GET / HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\"","service":"acquisition-api"}
+{"level":"info","message":"Hello from acquisition","service":"acquisition-api"}
+{"level":"info","message":"::1 - - [13/Sep/2025:15:12:18 +0000] \"GET / HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\"","service":"acquisition-api"}
+{"ip":"::1","level":"warn","message":"Rate limit exceeded","path":"/","service":"acquisition-api","userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"}
+{"level":"info","message":"::1 - - [13/Sep/2025:15:12:19 +0000] \"GET / HTTP/1.1\" 403 51 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\"","service":"acquisition-api"}
+{"ip":"::1","level":"warn","message":"Rate limit exceeded","path":"/","service":"acquisition-api","userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"}
+{"level":"info","message":"::1 - - [13/Sep/2025:15:12:19 +0000] \"GET / HTTP/1.1\" 403 51 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\"","service":"acquisition-api"}
+{"ip":"::1","level":"warn","message":"Rate limit exceeded","path":"/","service":"acquisition-api","userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"}
+{"level":"info","message":"::1 - - [13/Sep/2025:15:12:19 +0000] \"GET / HTTP/1.1\" 403 51 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\"","service":"acquisition-api"}
+{"ip":"::1","level":"warn","message":"Rate limit exceeded","path":"/","service":"acquisition-api","userAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"}
+{"level":"info","message":"::1 - - [13/Sep/2025:15:12:19 +0000] \"GET / HTTP/1.1\" 403 51 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\"","service":"acquisition-api"}
