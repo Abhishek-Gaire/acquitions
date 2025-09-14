@@ -41,4 +41,9 @@ app.get('/health', (req, res) => {
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes)
 
+app.use((req,res) => {
+    res.status(404).json({
+        error: 'Not Found',
+    });
+})
 export default app;
