@@ -5,6 +5,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 import authRoutes from '#routes/auth.routes.js';
+import userRoutes from '#routes/user.routes.js'
 import logger from '#config/logger.js';
 import securityMiddleware from "#middleware/security.middleware.js";
 
@@ -38,5 +39,6 @@ app.get('/health', (req, res) => {
   });
 });
 app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/users', userRoutes)
 
 export default app;
