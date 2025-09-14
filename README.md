@@ -1,6 +1,6 @@
 # Acquisitions API
 
-A Node.js Express API with authentication features, dockerized for both development and production environments.
+A Node.js Express API with authentication features, dockerized for both development and production environments .
 
 ## 🚀 Quick Start
 
