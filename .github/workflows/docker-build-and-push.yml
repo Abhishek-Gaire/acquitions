@@ -12,7 +12,7 @@ env:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -69,10 +69,10 @@ jobs:
           echo "- **Build ID**: ${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Platforms**: linux/amd64, linux/arm64" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           echo "### Published Images" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           # Parse and display tags
           TAGS="${{ steps.meta.outputs.tags }}"
           echo "#### Tags:" >> $GITHUB_STEP_SUMMARY
@@ -80,7 +80,7 @@ jobs:
           echo "$TAGS" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           # Generate pull commands
           echo "#### Pull Commands:" >> $GITHUB_STEP_SUMMARY
           echo '```bash' >> $GITHUB_STEP_SUMMARY
@@ -93,12 +93,12 @@ jobs:
           echo "docker run -p 3000:3000 $MAIN_TAG" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           echo "### Image Details" >> $GITHUB_STEP_SUMMARY
           echo "- **Digest**: ${{ steps.build.outputs.digest }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Image ID**: ${{ steps.build.outputs.imageid }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Cache Hit**: ${{ steps.build.outputs.cache-hit == 'true' && '✅ Yes' || '❌ No' }}" >> $GITHUB_STEP_SUMMARY
-          
+
           # Add security note
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🔒 Security Notes" >> $GITHUB_STEP_SUMMARY

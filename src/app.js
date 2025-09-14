@@ -5,9 +5,9 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 import authRoutes from '#routes/auth.routes.js';
-import userRoutes from '#routes/user.routes.js'
+import userRoutes from '#routes/user.routes.js';
 import logger from '#config/logger.js';
-import securityMiddleware from "#middleware/security.middleware.js";
+import securityMiddleware from '#middleware/security.middleware.js';
 
 const app = express();
 
@@ -39,11 +39,11 @@ app.get('/health', (req, res) => {
   });
 });
 app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1/users', userRoutes)
+app.use('/api/v1/users', userRoutes);
 
-app.use((req,res) => {
-    res.status(404).json({
-        error: 'Not Found',
-    });
-})
+app.use((req, res) => {
+  res.status(404).json({
+    error: 'Not Found',
+  });
+});
 export default app;

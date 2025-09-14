@@ -1,7 +1,7 @@
 import logger from '#config/logger.js';
 import { ZodError } from 'zod';
 
-export const errorHandler = (error, req, res, next) => {
+export const errorHandler = (error, req, res) => {
   logger.error('Error:', error);
 
   // Handle Zod validation errors

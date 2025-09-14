@@ -5,6 +5,7 @@ This repository includes three GitHub Actions workflows for comprehensive CI/CD 
 ## 📋 Workflows Overview
 
 ### 1. **Lint and Format** (`lint-and-format.yml`)
+
 - **Triggers**: Push/PR to `main` and `staging` branches
 - **Purpose**: Code quality assurance through linting and formatting checks
 - **Features**:
@@ -14,7 +15,8 @@ This repository includes three GitHub Actions workflows for comprehensive CI/CD 
   - Clear error messages with remediation steps
 
 ### 2. **Tests** (`tests.yml`)
-- **Triggers**: Push/PR to `main` and `staging` branches  
+
+- **Triggers**: Push/PR to `main` and `staging` branches
 - **Purpose**: Automated testing with coverage reporting
 - **Features**:
   - Jest test execution with experimental VM modules
@@ -24,6 +26,7 @@ This repository includes three GitHub Actions workflows for comprehensive CI/CD 
   - Test failure annotations with debugging tips
 
 ### 3. **Docker Build and Push** (`docker-build-and-push.yml`)
+
 - **Triggers**: Push to `main` branch or manual dispatch
 - **Purpose**: Multi-platform Docker image building and publishing
 - **Features**:
@@ -38,12 +41,14 @@ This repository includes three GitHub Actions workflows for comprehensive CI/CD 
 To use these workflows, configure the following repository secrets:
 
 ### Docker Hub Credentials
+
 ```
 DOCKER_USERNAME=your-dockerhub-username
 DOCKER_PASSWORD=your-dockerhub-password-or-token
 ```
 
 ### Optional Test Database (if needed)
+
 ```
 TEST_DATABASE_URL=postgresql://test:test@localhost:5432/test_db
 ```
@@ -53,13 +58,14 @@ TEST_DATABASE_URL=postgresql://test:test@localhost:5432/test_db
 The Docker workflow uses the following tagging strategy:
 
 - `latest` - Latest build from main branch
-- `main` - Branch-based tag  
+- `main` - Branch-based tag
 - `main-<sha>` - Commit-specific tag
 - `prod-YYYYMMDD-HHmmss` - Production timestamp tag
 
 ## 📊 Coverage Reports
 
 Test coverage reports are:
+
 - Generated automatically on every test run
 - Uploaded as artifacts (30-day retention)
 - Commented on pull requests
@@ -68,6 +74,7 @@ Test coverage reports are:
 ## 🚀 Usage Examples
 
 ### Local Development
+
 ```bash
 # Run linting
 npm run lint
@@ -82,6 +89,7 @@ npm test
 ```
 
 ### Docker Usage
+
 ```bash
 # Pull and run the latest image
 docker pull <username>/acquisitions:latest
@@ -98,22 +106,26 @@ docker run -p 3000:3000 <username>/acquisitions:latest
 ## 🐛 Troubleshooting
 
 ### Lint/Format Issues
+
 - Check ESLint configuration in `eslint.config.js`
 - Verify Prettier settings in `.prettierrc`
 - Run fixes locally: `npm run lint:fix && npm run format`
 
 ### Test Failures
+
 - Ensure all dependencies are installed
 - Check environment variables in test configuration
 - Verify Jest configuration in `jest.config.mjs`
 
 ### Docker Build Issues
+
 - Verify Dockerfile syntax
 - Check Docker Hub credentials
 - Ensure base images are accessible
 - Review build context and .dockerignore
 
 ## 📝 Workflow Files Location
+
 - `.github/workflows/lint-and-format.yml`
 - `.github/workflows/tests.yml`
 - `.github/workflows/docker-build-and-push.yml`

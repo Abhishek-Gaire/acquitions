@@ -12,12 +12,14 @@ A Node.js Express API with authentication features, dockerized for both developm
 ### Development Setup (Using Neon Local)
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/Abhishek-Gaire/acquitions.git
    cd acquitions
    ```
 
 2. **Start the development environment**
+
    ```bash
    npm run docker:dev
    ```
@@ -41,12 +43,14 @@ A Node.js Express API with authentication features, dockerized for both developm
 ### Production Setup (Using Neon Cloud)
 
 1. **Set environment variables**
+
    ```bash
    export DATABASE_URL="postgresql://neondb_owner:password@ep-your-endpoint.aws.neon.tech/neondb?sslmode=require"
    export JWT_SECRET="your-production-jwt-secret"
    ```
 
 2. **Start the production environment**
+
    ```bash
    npm run docker:prod
    ```
@@ -95,6 +99,7 @@ graph TB
 ```
 
 **Features:**
+
 - **Neon Local**: Local PostgreSQL with Neon branching features
 - **Hot Reload**: Source code changes trigger app restart
 - **Debug Logs**: Enhanced logging for development
@@ -113,6 +118,7 @@ graph TB
 ```
 
 **Features:**
+
 - **Neon Cloud**: Serverless PostgreSQL database
 - **Security**: Non-root user, read-only filesystem
 - **Health Checks**: Automated container health monitoring
@@ -121,6 +127,7 @@ graph TB
 ## 🛠 Available Scripts
 
 ### Development
+
 ```bash
 # Start development environment with Neon Local
 npm run docker:dev
@@ -139,6 +146,7 @@ npm run docker:build:dev
 ```
 
 ### Production
+
 ```bash
 # Start production environment (detached)
 npm run docker:prod
@@ -157,6 +165,7 @@ npm run docker:build:prod
 ```
 
 ### Standard Scripts
+
 ```bash
 # Run locally without Docker
 npm run dev
@@ -175,6 +184,7 @@ npm run db:studio      # Open Drizzle Studio
 ### Environment Variables
 
 #### Development (`.env.development`)
+
 ```bash
 # Automatically used by docker-compose.dev.yml
 DATABASE_URL=postgresql://postgres:password@neon-local:5432/neondb
@@ -184,6 +194,7 @@ JWT_SECRET=development-secret-change-in-production
 ```
 
 #### Production (Environment Variables)
+
 ```bash
 # Must be set in your deployment environment
 DATABASE_URL=postgresql://neondb_owner:password@ep-xxx.aws.neon.tech/neondb?sslmode=require
@@ -196,27 +207,32 @@ PORT=3000
 ### Database URLs
 
 #### Development (Neon Local)
+
 - **Internal**: `postgresql://postgres:password@neon-local:5432/neondb`
 - **External**: `postgresql://postgres:password@localhost:5432/neondb`
 
 #### Production (Neon Cloud)
+
 - Format: `postgresql://user:password@endpoint.aws.neon.tech/dbname?sslmode=require`
 - Example: `postgresql://neondb_owner:xxx@ep-sweet-morning-a1by3xpu-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require`
 
 ## 📚 API Endpoints
 
 ### Authentication
+
 - `POST /api/v1/auth/sign-up` - User registration
 - `POST /api/v1/auth/sign-in` - User login
 - `POST /api/v1/auth/sign-out` - User logout
 
 ### Utility
+
 - `GET /health` - Health check endpoint
 - `GET /` - Basic API info
 
 ### Example Requests
 
 #### Sign Up
+
 ```bash
 curl -X POST http://localhost:3000/api/v1/auth/sign-up \\
   -H "Content-Type: application/json" \\
@@ -229,6 +245,7 @@ curl -X POST http://localhost:3000/api/v1/auth/sign-up \\
 ```
 
 #### Sign In
+
 ```bash
 curl -X POST http://localhost:3000/api/v1/auth/sign-in \\
   -H "Content-Type: application/json" \\
@@ -252,12 +269,14 @@ curl -X POST http://localhost:3000/api/v1/auth/sign-in \\
 ## 🏗 Deployment
 
 ### Docker Swarm
+
 ```bash
 # Deploy to Docker Swarm
 docker stack deploy -c docker-compose.prod.yml acquisitions
 ```
 
 ### Kubernetes
+
 ```bash
 # Convert docker-compose to k8s manifests using kompose
 kompose convert -f docker-compose.prod.yml
@@ -267,16 +286,19 @@ kubectl apply -f .
 ### Cloud Platforms
 
 #### Railway
+
 ```bash
 railway up --detach
 ```
 
 #### Render
+
 - Connect your GitHub repository
 - Set environment variables in Render dashboard
 - Deploy using `docker-compose.prod.yml`
 
 #### AWS ECS/Fargate
+
 - Build and push image to ECR
 - Create ECS task definition
 - Deploy as ECS service
@@ -286,6 +308,7 @@ railway up --detach
 ### Common Issues
 
 #### Database Connection Issues
+
 ```bash
 # Check if Neon Local is running
 docker ps | grep neon-local
@@ -298,6 +321,7 @@ docker logs neon-local
 ```
 
 #### Application Issues
+
 ```bash
 # Check application logs
 npm run docker:dev:logs
@@ -310,6 +334,7 @@ docker compose -f docker-compose.dev.yml up --build --force-recreate
 ```
 
 #### Production Issues
+
 ```bash
 # Check production logs
 npm run docker:prod:logs
@@ -324,6 +349,7 @@ curl http://localhost:3000/health
 ### Debugging
 
 #### Access Container Shell
+
 ```bash
 # Development
 docker exec -it acquisitions-dev sh
@@ -333,6 +359,7 @@ docker exec -it acquisitions-prod sh
 ```
 
 #### Database Access
+
 ```bash
 # Connect to Neon Local
 docker exec -it neon-local psql -U postgres -d neondb
